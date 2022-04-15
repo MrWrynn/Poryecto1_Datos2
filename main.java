@@ -7,7 +7,7 @@ public class main {
     public static void main(String[] args) {
         Timer timer=new Timer();
         TimerTask tarea=new TimerTask() {
-            Interfaz itf=new Interfaz("eduardo","otro");
+            Interfaz itf=new Interfaz("Jugador 1","Jugador ");
 
             @Override
             public void run() {
