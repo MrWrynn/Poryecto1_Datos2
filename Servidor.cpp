@@ -20,7 +20,7 @@
 #include <string>
 #include <stdlib.h>
 #include "iostream"
-//#include "matrizpaginada.hpp"
+
 using namespace std;
 
 /* server parameters */
@@ -124,18 +124,23 @@ int main(int argc, char* argv[])          /* input arguments are not used */
                 {
                     std::string s(buff_rx,len_rx);
 
-                    if(s.find("rev")==string::npos){
+                    if(s.find("main")){
+                        string mensaje;
+                        cout<<"turno: "<<turno<<"\n";
+                        cout<<"i1: "<<i1<<"\n";
+                        cout<<"i2: "<<i2<<"\n";
+                        cout<<"j1: "<<j1<<"\n";
+                        cout<<"j2: "<<j2<<"\n";
+                        cout<<"prueba"<<mensaje<<"\n";
+                        int mlen=mensaje.length();
+                        send(connfd,mensaje.c_str(),mlen,0);
+                    }
+                    else{
                         string id;
-                        //char prim=s[0];
-                        //char seg=s[4];
                         char i_char=s[2];
                         char j_char=s[3];
                         id="123456789";
-
                         cout << "Prueba 2:" << id.c_str() << "\n";
-                        //cout << "i:" << prim << "\n";
-                        //cout << "j: " << seg << "\n";
-
                         std::string i(1,i_char);
                         std::string j(1,j_char);
                         if((i=="0"&&j=="0") || (i=="1"&&j=="1") || (i=="2"&&j=="2") || (i=="3"&&j=="3") || (i=="4"&&j=="4") ){
@@ -391,19 +396,6 @@ int main(int argc, char* argv[])          /* input arguments are not used */
                             cout<<mensaje.c_str()<<img1<<"\n";
                             send(connfd,mensaje.c_str(),mlen,0);
                         }
-
-
-                    }
-                    else{
-                        string mensaje;
-                        cout<<"turno: "<<turno<<"\n";
-                        cout<<"i1: "<<i1<<"\n";
-                        cout<<"i2: "<<i2<<"\n";
-                        cout<<"j1: "<<j1<<"\n";
-                        cout<<"j2: "<<j2<<"\n";
-                        cout<<"prueba"<<mensaje<<"\n";
-                        int mlen=mensaje.length();
-                        send(connfd,mensaje.c_str(),mlen,0);
                     }
                 }
             }
