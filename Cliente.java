@@ -2,9 +2,12 @@ import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 
+/**
+ * Esta clase permite crear el cliente que envía los mensajes al servidor
+ */
 public class Cliente {
     private String Host="localhost";
-    private int Port=4242;
+    private int Port=7979;
     private BufferedInputStream input;
     private DataOutputStream output;
     private String mensaje;

@@ -9,26 +9,32 @@ public class Carta{
    private int i;
    private int j;
    private String mensaje;
-   public JButton boton;
+   public JButton carta;
 
    public Carta(int i, int j){
+        carta=new JButton();
+
        this.i=i;
        this.j=j;
-       boton=new JButton();
+       
        ActionListener evento=new ActionListener(){
            @Override
-           public void actionPerformed(ActionEvent e){
+           public void actionPerformed(ActionEvent evento){
                Cliente cliente=new Cliente(getIJString());
                mensaje=cliente.getmensaje();
                //System.out.println(mensaje);
                ImageIcon imagen=new ImageIcon(mensaje);
                //boton.setEnabled(false);
-               boton.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(boton.getWidth(), boton.getHeight(),Image.SCALE_SMOOTH)));
+               carta.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(carta.getWidth(), carta.getHeight(),Image.SCALE_SMOOTH)));
+
            }
        };
-       boton.addActionListener(evento);
-   }
 
+       carta.addActionListener(evento);
+   }
+   /**
+    * metodo para obtener i y j y enviarlos por el cliente
+    */
    public String getIJString(){
        String valor= String.valueOf(i)+String.valueOf(j);
        return valor;
